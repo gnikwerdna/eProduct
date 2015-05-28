@@ -1,0 +1,21 @@
+{
+    "environmentSettings": {
+        "webSite": {
+            "name": "eProduct",
+            "location": "Australia East"
+        },
+        "databases": [
+            {
+                "connectionStringName": "DefaultConnection",
+                "databaseName": "eProduct_db",
+                "serverName": "pkmlguftek",
+                "user": "gnikwerdna",
+                "password": "",
+                "edition": "",
+                "size": "",
+                "collation": "",
+                "location": "Australia Southeast"
+            }
+        ]
+    }
+}

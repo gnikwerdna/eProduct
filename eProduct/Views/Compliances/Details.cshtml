@@ -1,0 +1,50 @@
+﻿@model eProduct.Models.Compliance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compliance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceFormId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceFormId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ComplianceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

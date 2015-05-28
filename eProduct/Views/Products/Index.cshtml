@@ -1,0 +1,114 @@
+﻿@model IEnumerable<eProduct.Models.ProductsToCategoryModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product Listing</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr><th> Item Name:</th><th> Product Group:</th><th>Pronto Part No</th></tr>
+            <tr>
+                <td>
+                    @Html.TextBox("SearchString")
+                </td>
+                <td>
+                    @Html.TextBox("SearchProductGroup")
+                </td>
+                <td>
+                    @Html.TextBox("SearchProntoPartNum")
+                </td>
+            </tr>
+        </table>
+    <input type="submit" value="filter" />
+    }
+
+<table class="table">
+    <tr>
+        <th>mo
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.Product.ProductGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProntoPartNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.StandardReferenceNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Regulation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.TestHouseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.AccreditationAgencyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Licenses)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Compliance Wizard", "../Products/Edit", new { id = item.Product.ProductID })
+        </td>
+
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProntoPartNumber)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Product.StandardReferenceNumber)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Product.Regulation)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Product.TestHouseName)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Product.AccreditationAgencyName)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Product.Licenses)
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Product.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Product.ProductID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Product.ProductID }) |
+            @Html.ActionLink("Add File", "AttachFile", new { id = item.Product.ProductID })
+        </td>
+    </tr>
+}
+
+</table>

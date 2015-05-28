@@ -1,0 +1,44 @@
+﻿@model IEnumerable<eProduct.Models.ProductCompliance>
+
+@{
+    ViewBag.Title = "Index";
+}
+@section compliancesteps
+{
+<script src="~/Scripts/jquery.steps.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<link href="~/Content/jquery.steps.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $("#vertical").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            stepsOrientation : "vertical"
+
+
+
+        });
+
+        function getcompliance()
+        {
+            var cpcode= $("#ComplianceID").val();
+            $.getJSON("/wizard/getcompliance?id=" + cpcode, null, function (data) {
+
+            });
+
+        }
+
+    </script>
+}
+<h2>Select Compliance Workflow</h2>
+
+<div id="vertical">
+    <h3>Compliance Type</h3>
+    <section>
+        @Html.DropDownList("ComplianceID", (IEnumerable<SelectListItem>)ViewBag.ComplianceID, new { @onchange = "location = this.value" })
+    </section>
+    <h3>Compliance Item</h3>
+    <section>
+        @Html.DropDownList("cpItemId", (IEnumerable<SelectListItem>)ViewBag.cpItemId, new { @onchange = "location = this.value" })
+    </section>
+</div>

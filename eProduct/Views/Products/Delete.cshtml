@@ -1,0 +1,52 @@
+﻿@model IQueryable<eProduct.Models.ProdCatSup>
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => item.productData.ProductName):</td>
+                <td>@Html.DisplayFor(ModelItem => item.productData.ProductName)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => item.categoryData.CategoryName):</td>
+                <td>@Html.DisplayFor(modelItem => item.categoryData.CategoryName)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => item.supplierData.CompanyName):</td>
+                <td>@Html.DisplayFor(modelItem => item.supplierData.CompanyName)</td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.productData.ProductID }) |  @Html.ActionLink("Back to List", "Index")</td>
+            </tr>
+
+        }
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

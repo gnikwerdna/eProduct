@@ -1,0 +1,58 @@
+﻿@model IQueryable<eProduct.Models.ProdCatSup>
+
+@using eProduct.Models;
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+      
+          
+        
+            <dt></dt>
+            <dd>
+                
+            </dd>
+      
+
+    </dl>
+    <table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayNameFor(modelItem=>item.productData.ProductName):</td>
+            <td>@Html.DisplayFor(ModelItem=>item.productData.ProductName)</td>
+           
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(modelItem => item.categoryData.CategoryName):</td>
+            <td>@Html.DisplayFor(modelItem => item.categoryData.CategoryName)</td>
+
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(modelItem => item.supplierData.CompanyName):</td>
+            <td>@Html.DisplayFor(modelItem => item.supplierData.CompanyName)</td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+               
+            <td>@Html.DisplayFor(modelItem => item.fileData.FileName)</td>
+           
+
+        </tr>
+        <tr>
+
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.productData.ProductID }) |  @Html.ActionLink("Back to List", "Index")</td>
+        </tr>
+
+    }
+    </table>
+</div>
+
