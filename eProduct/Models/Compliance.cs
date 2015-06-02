@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public class Compliance
     {
@@ -20,10 +19,10 @@ namespace eProduct.Models
         public int order { get; set; }
         public virtual Compliance compliance { get; set; }
         public int? ComplianceFormId { get; set; }
-        
-        
+
+
         public virtual ComplianceForm ComplianceForm { get; set; }
-        
+
         public virtual ICollection<Product> Product { get; set; }
     }
 }

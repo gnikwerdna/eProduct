@@ -1,16 +1,19 @@
-﻿@model IEnumerable<eProduct.Models.Compliance>
+﻿@model IEnumerable<eP.Models.Compliance>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Flow Chart Matrix</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplianceForm.FormName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -19,9 +22,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.subID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ComplianceForm.FormName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.level)
@@ -38,6 +38,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.ComplianceForm.FormName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
@@ -45,9 +48,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.subID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ComplianceForm.FormName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.level)

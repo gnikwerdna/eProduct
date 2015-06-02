@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public class Product
     {
@@ -16,7 +16,7 @@ namespace eProduct.Models
         public string ProductGroup { get; set; }
         [Display(Name = "Pronto Part No")]
         public string ProntoPartNumber { get; set; }
-         [Display(Name = "Product Manager")]
+        [Display(Name = "Product Manager")]
         public int ProductManager { get; set; }
         [Display(Name = "Product Compliance Specialist")]
         public int ProductComplianceSpecialist { get; set; }
@@ -36,5 +36,4 @@ namespace eProduct.Models
 
 
     }
-    
 }

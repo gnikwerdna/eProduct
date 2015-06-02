@@ -1,10 +1,11 @@
-﻿@model eProduct.Models.Compliance
+﻿@model eP.Models.Compliance
 
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
@@ -35,18 +36,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.subID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                 @Html.DropDownList("subID", null, "Select",htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.subID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.subID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComplianceFormId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ComplianceFormId", null,"Select", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ComplianceFormId, "", new { @class = "text-danger" })
-            </div>
-        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.level, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -54,6 +48,7 @@
                 @Html.ValidationMessageFor(model => model.level, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.grp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -61,6 +56,7 @@
                 @Html.ValidationMessageFor(model => model.grp, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -68,6 +64,15 @@
                 @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComplianceFormId, "ComplianceFormId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ComplianceFormId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ComplianceFormId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -79,3 +84,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

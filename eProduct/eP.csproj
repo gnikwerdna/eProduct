@@ -7,13 +7,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{61ACF364-19D5-4855-85BB-DE13871C83E7}</ProjectGuid>
+    <ProjectGuid>{64D5D497-7C60-4ECC-AAB3-78449EE5F617}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eProduct</RootNamespace>
-    <AssemblyName>eProduct</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>eP</RootNamespace>
+    <AssemblyName>eP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -41,19 +41,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activities" />
-    <Reference Include="System.ServiceModel.Channels" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -164,22 +159,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ComplianceFormsController.cs" />
     <Compile Include="Controllers\CompliancesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506020831131_initial.cs" />
-    <Compile Include="Migrations\201506020831131_initial.Designer.cs">
-      <DependentUpon>201506020831131_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201506020141599_initial.cs" />
+    <Compile Include="Migrations\201506020141599_initial.Designer.cs">
+      <DependentUpon>201506020141599_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Compliance.cs" />
     <Compile Include="Models\ComplianceForm.cs" />
@@ -192,10 +189,8 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCompliance.cs" />
     <Compile Include="Models\ProductDBContext.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Models\ProductsToCategoryModel.cs" />
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserTypes.cs" />
     <Compile Include="Models\WizardModels.cs" />
@@ -204,24 +199,22 @@
     <Compile Include="ViewModels\AssignedComplianceData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\eP.Models.ProductDBContext.mdf" />
+    <Content Include="App_Data\eP.Models.ProductDBContext_log.ldf">
+      <DependentUpon>eP.Models.ProductDBContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\jquery.steps.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\eProd %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\eprod.pubxml" />
-    <None Include="Properties\PublishProfiles\eProductDevelopment.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.steps.js" />
-    <Content Include="Scripts\jquery.steps.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -230,9 +223,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -277,23 +268,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Suppliers\Create.cshtml" />
-    <Content Include="Views\Suppliers\Delete.cshtml" />
-    <Content Include="Views\Suppliers\Details.cshtml" />
-    <Content Include="Views\Suppliers\Edit.cshtml" />
-    <Content Include="Views\Suppliers\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Products\AttachFile.cshtml" />
-    <Content Include="Views\Wizard\Step1.cshtml" />
-    <Content Include="Views\Wizard\Step2.cshtml" />
-    <Content Include="Views\Wizard\Step3.cshtml" />
-    <Content Include="Views\Wizard\Complete.cshtml" />
-    <Content Include="Views\Wizard\Index.cshtml" />
-    <Content Include="Views\Maintenance\Index.cshtml" />
     <Content Include="Views\ComplianceForms\Create.cshtml" />
     <Content Include="Views\ComplianceForms\Delete.cshtml" />
     <Content Include="Views\ComplianceForms\Details.cshtml" />
@@ -304,7 +278,20 @@
     <Content Include="Views\Compliances\Details.cshtml" />
     <Content Include="Views\Compliances\Edit.cshtml" />
     <Content Include="Views\Compliances\Index.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Products\Compliance.cshtml" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -313,11 +300,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506020831131_initial.resx">
-      <DependentUpon>201506020831131_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506020141599_initial.resx">
+      <DependentUpon>201506020141599_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -336,9 +320,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49242</DevelopmentServerPort>
+          <DevelopmentServerPort>50744</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49242/</IISUrl>
+          <IISUrl>http://localhost:50744/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

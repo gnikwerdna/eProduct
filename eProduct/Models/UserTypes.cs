@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public class UserTypes
     {

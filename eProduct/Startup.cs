@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(eProduct.Startup))]
-namespace eProduct
+[assembly: OwinStartupAttribute(typeof(eP.Startup))]
+namespace eP
 {
     public partial class Startup
     {

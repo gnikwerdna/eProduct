@@ -1,6 +1,5 @@
-﻿@model IQueryable<eProduct.Models.ProdCatSup>
+﻿@model eP.Models.Product
 
-@using eProduct.Models;
 @{
     ViewBag.Title = "Details";
 }
@@ -11,48 +10,105 @@
     <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
-      
-          
-        
-            <dt></dt>
-            <dd>
-                
-            </dd>
-      
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProntoPartNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProntoPartNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductManager)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductManager)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductComplianceSpecialist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductComplianceSpecialist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardReferenceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardReferenceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Regulation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regulation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestHouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestHouseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccreditationAgencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccreditationAgencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Licenses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licenses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplierID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplierID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
 
     </dl>
-    <table>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@Html.DisplayNameFor(modelItem=>item.productData.ProductName):</td>
-            <td>@Html.DisplayFor(ModelItem=>item.productData.ProductName)</td>
-           
-        </tr>
-        <tr>
-            <td>@Html.DisplayNameFor(modelItem => item.categoryData.CategoryName):</td>
-            <td>@Html.DisplayFor(modelItem => item.categoryData.CategoryName)</td>
-
-        </tr>
-        <tr>
-            <td>@Html.DisplayNameFor(modelItem => item.supplierData.CompanyName):</td>
-            <td>@Html.DisplayFor(modelItem => item.supplierData.CompanyName)</td>
-
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-               
-            <td>@Html.DisplayFor(modelItem => item.fileData.FileName)</td>
-           
-
-        </tr>
-        <tr>
-
-            <td>@Html.ActionLink("Edit", "Edit", new { id = item.productData.ProductID }) |  @Html.ActionLink("Back to List", "Index")</td>
-        </tr>
-
-    }
-    </table>
 </div>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

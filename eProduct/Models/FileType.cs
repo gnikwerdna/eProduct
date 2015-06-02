@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public enum FileType
     {
-        Avatar=1, Photo
+        Avatar = 1, Photo
     }
 }

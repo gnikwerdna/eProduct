@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using eProduct.Models;
+using eP.Models;
 
-namespace eProduct.Controllers
+namespace eP.Controllers
 {
     public class ComplianceFormsController : Controller
     {

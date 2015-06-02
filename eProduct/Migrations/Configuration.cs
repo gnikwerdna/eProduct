@@ -5,15 +5,14 @@ namespace eProduct.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<eProduct.Models.ProductDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<eP.Models.ProductDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(eProduct.Models.ProductDBContext context)
+        protected override void Seed(eP.Models.ProductDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

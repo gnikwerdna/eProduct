@@ -6,8 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using eP.Models;
+using eP.Models;
 
-namespace eProduct.Models
+namespace eP.Controllers
 {
     public class CategoriesController : Controller
     {

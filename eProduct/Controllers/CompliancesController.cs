@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using eProduct.Models;
+using eP.Models;
 
-namespace eProduct.Controllers
+namespace eP.Controllers
 {
     public class CompliancesController : Controller
     {
@@ -17,26 +17,8 @@ namespace eProduct.Controllers
         // GET: Compliances
         public ActionResult Index()
         {
-
-
-            /*
-            IQueryable<Course> courses = db.Courses
-                .Where(c => !SelectedDepartment.HasValue || c.DepartmentID == departmentID)
-                .OrderBy(d => d.CourseID)
-                .Include(d => d.Department);
-            var sql = courses.ToString();
-            return View(courses.ToList());
-            
-            */
-            IQueryable<Compliance> compliance = db.compliance
-                .Include(d => d.ComplianceForm)
-                .OrderBy(d=>d.grp)
-                .OrderByDescending(d=>d.order)
-                ;
-                
-            var sql = compliance.ToString();
+            var compliance = db.compliance.Include(c => c.ComplianceForm);
             return View(compliance.ToList());
-            //return View(db.compliance.ToList());
         }
 
         // GET: Compliances/Details/5
@@ -57,8 +39,7 @@ namespace eProduct.Controllers
         // GET: Compliances/Create
         public ActionResult Create()
         {
-            createPopulateComplianceForms();
-            CreatePopulateComplianceSubItems();
+            ViewBag.ComplianceFormId = new SelectList(db.ComplianceForms, "ComplianceFormId", "FormName");
             return View();
         }
 
@@ -67,7 +48,7 @@ namespace eProduct.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ComplianceID,Title,Description,subID,ComplianceFormId,level,grp,order")] Compliance compliance)
+        public ActionResult Create([Bind(Include = "ComplianceID,Title,Description,subID,level,grp,order,ComplianceFormId")] Compliance compliance)
         {
             if (ModelState.IsValid)
             {
@@ -76,6 +57,7 @@ namespace eProduct.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ComplianceFormId = new SelectList(db.ComplianceForms, "ComplianceFormId", "FormName", compliance.ComplianceFormId);
             return View(compliance);
         }
 
@@ -91,48 +73,16 @@ namespace eProduct.Controllers
             {
                 return HttpNotFound();
             }
-            PopulateComplianceForms(compliance.ComplianceFormId);
-            PopulateComplianceSubItems(compliance.ComplianceFormId);
+            ViewBag.ComplianceFormId = new SelectList(db.ComplianceForms, "ComplianceFormId", "FormName", compliance.ComplianceFormId);
             return View(compliance);
         }
-        private void createPopulateComplianceForms()
-        {
-            var ComplianceFormsQuery = from d in db.ComplianceForms
-                                       orderby d.FormName
-                                       select d;
-            ViewBag.ComplianceFormId = new SelectList(ComplianceFormsQuery, "ComplianceFormId", "FormName", "Select");
-        }
 
-        private void CreatePopulateComplianceSubItems()
-        {
-            var compsubitems = from d in db.compliance
-                               orderby d.Title
-                               select d;
-            ViewBag.subID = new SelectList(compsubitems, "ComplianceID", "Title", "Select");
-
-        }
-
-        private void PopulateComplianceForms(object selectedForm = null)
-        {
-            var ComplianceFormsQuery = from d in db.ComplianceForms
-                                       orderby d.FormName
-                                   select d;
-            ViewBag.ComplianceFormId = new SelectList(ComplianceFormsQuery, "ComplianceFormId", "FormName", selectedForm);
-        }
-        private void PopulateComplianceSubItems(object selectedForm = null)
-        {
-            var compsubitems = from d in db.compliance
-                               orderby d.Title
-                               select d;
-            ViewBag.subID = new SelectList(compsubitems, "ComplianceID", "Title", selectedForm);
-
-        }
         // POST: Compliances/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ComplianceID,Title,Description,subID,ComplianceFormId,level,grp,order")] Compliance compliance)
+        public ActionResult Edit([Bind(Include = "ComplianceID,Title,Description,subID,level,grp,order,ComplianceFormId")] Compliance compliance)
         {
             if (ModelState.IsValid)
             {
@@ -140,6 +90,7 @@ namespace eProduct.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ComplianceFormId = new SelectList(db.ComplianceForms, "ComplianceFormId", "FormName", compliance.ComplianceFormId);
             return View(compliance);
         }
 

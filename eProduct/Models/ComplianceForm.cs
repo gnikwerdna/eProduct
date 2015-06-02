@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public class ComplianceForm
     {
         [Key]
         public int ComplianceFormId { get; set; }
-        [Display(Name="Form Name")]
+        [Display(Name = "Form Name")]
         public string FormName { get; set; }
         public string Description { get; set; }
-       // public virtual Compliance compliance { get; set; }
+        // public virtual Compliance compliance { get; set; }
     }
 }

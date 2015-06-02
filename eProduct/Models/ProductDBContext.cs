@@ -1,13 +1,14 @@
-﻿using System;
+﻿using eP.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
-    public class ProductDBContext :DbContext
+    public class ProductDBContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -19,24 +20,5 @@ namespace eProduct.Models
         public DbSet<ProductCompliance> productcompliance { get; set; }
         public DbSet<ComplianceForm> ComplianceForms { get; set; }
         public DbSet<ProductsToCategoryModel> ProductsToCategoryModel { get; set; }
-
-       // public System.Data.Entity.DbSet<eProduct.Models.ComplianceForm> ComplianceForms { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Entity<Product>()
-                .HasMany(c=>c.Compliance).WithMany(i=>i.Product)
-                
-                .Map(t=> t.MapLeftKey("ProductID")
-                .MapRightKey("ComplianceID")
-                    .ToTable("AssignedComplianceData"));
-
-           
-
-        }
-       
     }
 }

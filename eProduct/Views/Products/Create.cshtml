@@ -1,4 +1,4 @@
-﻿@model eProduct.Models.Product
+﻿@model eP.Models.Product
 
 @{
     ViewBag.Title = "Create";
@@ -7,7 +7,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "Products", null, FormMethod.Post, new {enctype="multipart/form-data" }))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -42,9 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductManager, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               
-
-                @Html.DropDownList("ProductManager", ViewBag.ProductManager as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.EditorFor(model => model.ProductManager, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductManager, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductComplianceSpecialist, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ProductManager", ViewBag.ProductManager as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.EditorFor(model => model.ProductComplianceSpecialist, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductComplianceSpecialist, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -98,29 +96,19 @@
         </div>
 
         <div class="form-group">
-           @Html.Label("Product Supplier", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SupplierID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SupplierID, ViewBag.SupplierList as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.EditorFor(model => model.SupplierID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SupplierID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-           @Html.Label("Product Category", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoryID, ViewBag.CategoryList as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-               
             </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("Specificatin File Upload", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file"id="Avatar" name="upload" />
-
-
-            </div>
-
         </div>
 
         <div class="form-group">

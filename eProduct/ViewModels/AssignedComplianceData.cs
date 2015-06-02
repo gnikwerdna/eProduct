@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.ViewModels
+namespace eP.ViewModels
 {
     public class AssignedComplianceData
     {

@@ -1,4 +1,4 @@
-﻿@model eProduct.Models.Compliance
+﻿@model eP.Models.Compliance
 
 @{
     ViewBag.Title = "Details";
@@ -10,6 +10,14 @@
     <h4>Compliance</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplianceForm.FormName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplianceForm.FormName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -35,11 +43,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ComplianceFormId)
+            @Html.DisplayNameFor(model => model.level)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ComplianceFormId)
+            @Html.DisplayFor(model => model.level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.order)
         </dd>
 
     </dl>

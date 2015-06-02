@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace eProduct.Models
+namespace eP.Models
 {
     public class File
     {
@@ -17,6 +17,5 @@ namespace eProduct.Models
         public FileType FileType { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
-
     }
 }

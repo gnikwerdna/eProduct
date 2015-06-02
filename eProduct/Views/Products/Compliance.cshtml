@@ -1,0 +1,94 @@
+﻿@model eP.Models.Product
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        @{
+                            //int cnt = 0;
+                            int grp = 1;
+                            int subcntlvl2 = 0;
+                            List<eP.ViewModels.AssignedComplianceData> courses = ViewBag.Compliance;
+                             
+                            foreach (var course in courses)
+                            {
+                              
+                                // if (cnt++ % 3 == 0)
+                                if (grp != @course.grp)
+                                {
+                                    @:</tr><tr>
+                                  
+                                }
+                                @:<td>
+                               
+                                if (@course.order == 1)
+                                {
+                                     @:<div id="@course.order" class="top_@course.grp">
+                                    <input id="@course.order" type="checkbox" 
+                                           name="SelectedComp"
+                                           value="@course.ComplianceID"
+                                           @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
+                                        @course.ComplianceID @:  @course.Title @course.grp 
+                                  }
+                                else if (@course.level >= 2)
+                                  {
+                                   if(  subcntlvl2++ % 2==0)
+                                   {
+                                        @:</div></td></tr><tr  id="div_@course.grp"><td><div id="div_@course.grp" class="@course.grp"   >
+                                    }
+                                    else
+                                   { 
+                                     @:<div id="div_@course.grp" class="@course.grp" >
+                                    }
+                                    <input id="@course.grp@course.order" type="radio"
+                                           name="SelectedCompSubItem_@course.grp"
+                                           value="@course.ComplianceID"
+                                           @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) />
+                                    @course.ComplianceID @:  @course.Title @course.grp 
+                                    @:</div>
+                                  }
+                                @:</div>
+                               @:</td>
+                               grp = @course.grp;
+                              
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
+            </div>
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

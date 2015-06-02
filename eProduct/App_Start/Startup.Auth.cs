@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using eProduct.Models;
+using eP.Models;
 
-namespace eProduct
+namespace eP
 {
     public partial class Startup
     {
